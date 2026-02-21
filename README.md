@@ -1,4 +1,4 @@
-# Welcome to your Lovable project
+# Welcome to RESCU-EYE Project
 
 ## Project info
 
@@ -62,7 +62,7 @@ This project is built with:
 
 ## How can I deploy this project?
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+This project is configured for deployment on Vercel. Simply push your changes to GitHub to trigger a new build.
 
 ## Can I connect a custom domain to my Lovable project?
 

@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { Eye } from 'lucide-react';
 import type { DriverState, DriverConfig } from '@/lib/types';
 
 interface StatusHeaderProps {
@@ -22,11 +23,16 @@ export default function StatusHeader({ config, state, isOnline, serialConnected 
   return (
     <header className="glass-panel px-5 py-3 flex items-center justify-between">
       {/* Left: Brand */}
-      <div className="flex items-center gap-4">
-        <h1 className="font-orbitron text-lg font-bold neon-text tracking-[0.2em]">
-          RESCU-EYE
-        </h1>
-        <span className="font-orbitron text-[10px] font-medium text-primary/40 tracking-widest">PRO</span>
+      <div className="flex items-center gap-3">
+        <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-primary/10 border border-primary/20">
+          <Eye className="w-5 h-5 neon-text" />
+        </div>
+        <div className="flex items-center gap-3">
+          <h1 className="font-orbitron text-lg font-bold neon-text tracking-[0.2em]">
+            RESCU-EYE
+          </h1>
+          <span className="font-orbitron text-[10px] font-medium text-primary/40 tracking-widest">PRO</span>
+        </div>
       </div>
 
       {/* Center: Vehicle Plate */}
