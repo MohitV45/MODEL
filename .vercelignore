@@ -1,6 +1,3 @@
-# Ignore the Flutter application
-sentinel_flutter/
-
 # Ignore documentation and other non-website files
 README.md
 docs/
