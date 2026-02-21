@@ -1,0 +1,13 @@
+# Ignore the Flutter application
+sentinel_flutter/
+
+# Ignore documentation and other non-website files
+README.md
+docs/
+
+# Standard Vercel ignores
+node_modules
+.git
+.vscode
+.idea
+.DS_Store

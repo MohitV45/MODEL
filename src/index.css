@@ -1,0 +1,184 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap');
+
+@layer base {
+  :root {
+    /* Core cockpit palette */
+    --background: 0 0% 2%;
+    --foreground: 136 100% 50%;
+
+    --card: 0 0% 5%;
+    --card-foreground: 136 100% 50%;
+
+    --popover: 0 0% 5%;
+    --popover-foreground: 136 100% 50%;
+
+    --primary: 136 100% 50%;
+    --primary-foreground: 0 0% 2%;
+
+    --secondary: 136 40% 12%;
+    --secondary-foreground: 136 100% 50%;
+
+    --muted: 0 0% 10%;
+    --muted-foreground: 136 30% 40%;
+
+    --accent: 136 80% 20%;
+    --accent-foreground: 136 100% 70%;
+
+    --destructive: 346 100% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 136 40% 15%;
+    --input: 136 40% 15%;
+    --ring: 136 100% 50%;
+
+    --radius: 0.75rem;
+
+    /* Custom tokens */
+    --neon-green: 136 100% 50%;
+    --neon-green-glow: 0 0 20px hsl(136 100% 50% / 0.5), 0 0 40px hsl(136 100% 50% / 0.2);
+    --crimson: 346 100% 50%;
+    --crimson-glow: 0 0 20px hsl(346 100% 50% / 0.5), 0 0 40px hsl(346 100% 50% / 0.2);
+    --amber: 45 100% 50%;
+    --amber-glow: 0 0 20px hsl(45 100% 50% / 0.5), 0 0 40px hsl(45 100% 50% / 0.2);
+    --glass-bg: hsl(0 0% 5% / 0.6);
+    --glass-border: hsl(136 100% 50% / 0.15);
+    --glass-blur: 20px;
+
+    --sidebar-background: 0 0% 3%;
+    --sidebar-foreground: 136 100% 50%;
+    --sidebar-primary: 136 100% 50%;
+    --sidebar-primary-foreground: 0 0% 2%;
+    --sidebar-accent: 136 80% 20%;
+    --sidebar-accent-foreground: 136 100% 70%;
+    --sidebar-border: 136 40% 15%;
+    --sidebar-ring: 136 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Rajdhani', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Orbitron', sans-serif;
+  }
+
+  code, .mono {
+    font-family: 'Share Tech Mono', monospace;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border-radius: var(--radius);
+  }
+
+  .neon-text {
+    color: hsl(var(--neon-green));
+    text-shadow: var(--neon-green-glow);
+  }
+
+  .crimson-text {
+    color: hsl(var(--crimson));
+    text-shadow: var(--crimson-glow);
+  }
+
+  .amber-text {
+    color: hsl(var(--amber));
+    text-shadow: var(--amber-glow);
+  }
+
+  .neon-border {
+    border-color: hsl(var(--neon-green) / 0.4);
+    box-shadow: var(--neon-green-glow);
+  }
+
+  .crimson-border {
+    border-color: hsl(var(--crimson) / 0.4);
+    box-shadow: var(--crimson-glow);
+  }
+
+  .hud-label {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: hsl(var(--muted-foreground));
+  }
+
+  .hud-value {
+    font-family: 'Share Tech Mono', monospace;
+    color: hsl(var(--neon-green));
+    text-shadow: var(--neon-green-glow);
+  }
+
+  .scanline {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .scanline::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      hsl(var(--neon-green) / 0.3) 50%,
+      transparent 100%
+    );
+    animation: scanline 4s linear infinite;
+  }
+
+  @keyframes scanline {
+    0% { top: 0; }
+    100% { top: 100%; }
+  }
+
+  @keyframes pulse-ring {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(1.5); opacity: 0; }
+  }
+
+  @keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    14% { transform: scale(1.15); }
+    28% { transform: scale(1); }
+    42% { transform: scale(1.1); }
+  }
+
+  @keyframes grid-move {
+    0% { background-position: 0 0; }
+    100% { background-position: 40px 40px; }
+  }
+
+  .bg-grid {
+    background-image:
+      linear-gradient(hsl(var(--neon-green) / 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--neon-green) / 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    animation: grid-move 8s linear infinite;
+  }
+
+  @keyframes critical-pulse {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
+  }
+}
